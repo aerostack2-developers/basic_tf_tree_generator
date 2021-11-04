@@ -34,7 +34,7 @@ BasicTFTreeGenerator::BasicTFTreeGenerator():aerostack2::Node("basicTFTreeGenera
     tfstatic_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
 
     odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
-        this->generate_topic_name("self_localization/odom"),1,
+        this->generate_global_name("self_localization/odom"),1,
         std::bind(&BasicTFTreeGenerator::odomCallback, this, std::placeholders::_1));
 };
 
@@ -43,8 +43,8 @@ void BasicTFTreeGenerator::odomCallback(const nav_msgs::msg::Odometry::SharedPtr
 
     rclcpp::Time timestamp = this->get_clock()->now();
 
-    odom2base_link_tf_.header.frame_id = "odom";
-    odom2base_link_tf_.child_frame_id  = "base_link";
+    // odom2base_link_tf_.header.frame_id = "odom";
+    // odom2base_link_tf_.child_frame_id  = "base_link";
     odom2base_link_tf_.header.stamp    = timestamp;
     odom2base_link_tf_.transform.translation.x = msg->pose.pose.position.x;
     odom2base_link_tf_.transform.translation.y = msg->pose.pose.position.y;
@@ -63,11 +63,12 @@ void BasicTFTreeGenerator::setupTf()
 {
 	tf2_fix_transforms_.clear();
     // global reference to drone reference
-    tf2_fix_transforms_.emplace_back(getTransformation("map","odom",0,0,0,0,0,0));
+    std::string ns = this->get_namespace();
+    tf2_fix_transforms_.emplace_back(getTransformation("map",ns+"/odom",0,0,0,0,0,0));
     
     // Odom_rs to rs_link_own
-	odom2base_link_tf_.header.frame_id = "odom";
-	odom2base_link_tf_.child_frame_id  = "base_link";
+	odom2base_link_tf_.header.frame_id = ns + "/odom";
+	odom2base_link_tf_.child_frame_id  = ns + "/base_link";
 	odom2base_link_tf_.transform.rotation.w = 1.0f;
 
     publishTFs();
