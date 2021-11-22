@@ -2,8 +2,8 @@
 #define BASIC_TF_TREE_GENERATOR_HPP_
 
 #include <rclcpp/rclcpp.hpp>
-#include "aerostack2_core/node.hpp"
-#include <aerostack2_core/tf_utils.hpp>
+#include "as2_core/node.hpp"
+#include <as2_core/tf_utils.hpp>
 
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2_ros/static_transform_broadcaster.h>
@@ -17,7 +17,7 @@
 
 #include "nav_msgs/msg/odometry.hpp"
 
-class BasicTFTreeGenerator:public aerostack2::Node{
+class BasicTFTreeGenerator:public as2::Node{
     public:
         BasicTFTreeGenerator();
 

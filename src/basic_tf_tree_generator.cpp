@@ -1,6 +1,6 @@
 #include "basic_tf_tree_generator.hpp"
 
-BasicTFTreeGenerator::BasicTFTreeGenerator():aerostack2::Node("basicTFTreeGenerator"){
+BasicTFTreeGenerator::BasicTFTreeGenerator():as2::Node("basicTFTreeGenerator"){
     // Initialize the transform broadcaster
     tf_broadcaster_       = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
     tfstatic_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);

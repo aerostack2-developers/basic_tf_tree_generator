@@ -19,8 +19,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
-find_package(aerostack2_core REQUIRED)
-find_package(aerostack2_msgs REQUIRED)
+find_package(as2_core REQUIRED)
+find_package(as2_msgs REQUIRED)
 
 
 include_directories(
@@ -37,7 +37,7 @@ set(SOURCE_CPP_FILES
 )
 
 add_executable(${PROJECT_NAME}_node src/basic_tf_tree_generator_node.cpp ${SOURCE_CPP_FILES})
-ament_target_dependencies(${PROJECT_NAME}_node rclcpp tf2 tf2_ros tf2_geometry_msgs std_msgs sensor_msgs nav_msgs geometry_msgs std_srvs aerostack2_core aerostack2_msgs)
+ament_target_dependencies(${PROJECT_NAME}_node rclcpp tf2 tf2_ros tf2_geometry_msgs std_msgs sensor_msgs nav_msgs geometry_msgs std_srvs as2_core as2_msgs)
 
 
 install(DIRECTORY
