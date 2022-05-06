@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/build/linux-debug",
+  "command": "/usr/bin/c++  -DDEFAULT_RMW_IMPLEMENTATION=rmw_cyclonedds_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -I/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/include -I/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/include/basic_tf_tree_generator -isystem /home/miguel/aerostack2_ws/install/as2_core/include -isystem /home/miguel/aerostack2_ws/install/as2_msgs/include -isystem /opt/ros/galactic/include -isystem /usr/include/eigen3  -g   -std=gnu++17 -o CMakeFiles/basic_tf_tree_generator_node.dir/src/basic_tf_tree_generator_node.cpp.o -c /home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/src/basic_tf_tree_generator_node.cpp",
+  "file": "/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/src/basic_tf_tree_generator_node.cpp"
+},
+{
+  "directory": "/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/build/linux-debug",
+  "command": "/usr/bin/c++  -DDEFAULT_RMW_IMPLEMENTATION=rmw_cyclonedds_cpp -DRCUTILS_ENABLE_FAULT_INJECTION -I/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/include -I/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/include/basic_tf_tree_generator -isystem /home/miguel/aerostack2_ws/install/as2_core/include -isystem /home/miguel/aerostack2_ws/install/as2_msgs/include -isystem /opt/ros/galactic/include -isystem /usr/include/eigen3  -g   -std=gnu++17 -o CMakeFiles/basic_tf_tree_generator_node.dir/src/basic_tf_tree_generator.cpp.o -c /home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/src/basic_tf_tree_generator.cpp",
+  "file": "/home/miguel/aerostack2_ws/src/aerostack2/stack/hardware_interface/basic_tf_tree_generator/src/basic_tf_tree_generator.cpp"
+}
+]
