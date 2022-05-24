@@ -1,18 +1,21 @@
 #include "basic_tf_tree_generator.hpp"
 
-BasicTFTreeGenerator::BasicTFTreeGenerator() : as2::Node("basicTFTreeGenerator") {
+BasicTFTreeGenerator::BasicTFTreeGenerator() : as2::Node("basicTFTreeGenerator")
+{
   // Initialize the transform broadcaster
   tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
   tfstatic_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
 
   odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
-      this->generate_global_name("self_localization/odom"), 1,
+      this->generate_global_name(as2_names::topics::self_localization::odom),
+      as2_names::topics::self_localization::qos,
       std::bind(&BasicTFTreeGenerator::odomCallback, this, std::placeholders::_1));
 
   this->setupTf();
 };
 
-void BasicTFTreeGenerator::odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
+void BasicTFTreeGenerator::odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
+{
   rclcpp::Time timestamp = this->get_clock()->now();
 
   odom2base_link_tf_.header.stamp = timestamp;
@@ -28,7 +31,8 @@ void BasicTFTreeGenerator::odomCallback(const nav_msgs::msg::Odometry::SharedPtr
   publishTFs();
 }
 
-void BasicTFTreeGenerator::setupTf() {
+void BasicTFTreeGenerator::setupTf()
+{
   tf2_fix_transforms_.clear();
   // global reference to drone reference
   std::string ns = this->get_namespace();
@@ -47,9 +51,11 @@ void BasicTFTreeGenerator::setupTf() {
   publishTFs();
 }
 
-void BasicTFTreeGenerator::publishTFs() {
+void BasicTFTreeGenerator::publishTFs()
+{
   rclcpp::Time timestamp = this->get_clock()->now();
-  for (geometry_msgs::msg::TransformStamped& transform : tf2_fix_transforms_) {
+  for (geometry_msgs::msg::TransformStamped &transform : tf2_fix_transforms_)
+  {
     transform.header.stamp = timestamp;
     tfstatic_broadcaster_->sendTransform(transform);
   }
